@@ -18,6 +18,7 @@ class Product extends Model
     protected $casts = [
         'sizes' => 'array',
         'colors' => 'array',
+        'other_image' => 'array',
     ];
     /**
      * Get the category that owns the Product

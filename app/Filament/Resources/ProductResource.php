@@ -44,6 +44,7 @@ class ProductResource extends Resource
                     ->image()
                     ->required(),
                 Forms\Components\FileUpload::make('other_image')
+                    ->multiple()
                     ->image(),
                 // Forms\Components\TextInput::make('sizes'),
                 // Forms\Components\TextInput::make('colors'),
