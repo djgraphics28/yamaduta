@@ -44,9 +44,10 @@ class ProductResource extends Resource
                     ->image()
                     ->required(),
                 Forms\Components\FileUpload::make('other_image')
-                    ->multiple()
                     ->image(),
-                Forms\Components\Repeater::make('colors')
+                // Forms\Components\TextInput::make('sizes'),
+                // Forms\Components\TextInput::make('colors'),
+                 Forms\Components\Repeater::make('colors')
                     ->schema([
                         Forms\Components\Select::make('colors')
                             ->label('Colors')
@@ -64,23 +65,10 @@ class ProductResource extends Resource
                             ->required(),
                     ])
                     ->columns(2),
-                // Forms\Components\TextInput::make('colors'),
-                // Forms\Components\Select::make('sizes')
-                //     ->label('Sizes')
-                //     ->options(Size::all()->pluck('name', 'id'))
-                //     ->searchable()
-                //     ->multiple()
-                //     ->required(),
-                // Forms\Components\Select::make('colors')
-                //     ->label('Colors')
-                //     ->options(Color::all()->pluck('name', 'id'))
-                //     ->searchable()
-                //     ->multiple()
-                //     ->required(),
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('₱'),
+                    ->prefix('$'),
                 Forms\Components\TextInput::make('stocks')
                     ->required()
                     ->numeric()

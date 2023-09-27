@@ -16,8 +16,8 @@ class Product extends Model
     protected $fillable = [ 'product_code', 'main_image', 'other_image', 'category_id', 'name', 'price', 'stocks', 'description', 'sizes', 'colors', 'is_active', 'is_visible', 'is_featured' ];
 
     protected $casts = [
-        'sizes' => 'json',
-        'colors' => 'json',
+        'sizes' => 'array',
+        'colors' => 'array',
     ];
     /**
      * Get the category that owns the Product
@@ -29,23 +29,23 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    /**
-     * Get the color that owns the Product
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function color(): BelongsTo
-    {
-        return $this->belongsTo(Color::class, 'color_id', 'id');
-    }
+    // /**
+    //  * Get the color that owns the Product
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function color(): BelongsTo
+    // {
+    //     return $this->belongsTo(Color::class, 'color_id', 'id');
+    // }
 
-    /**
-     * Get the size that owns the Product
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function size(): BelongsTo
-    {
-        return $this->belongsTo(Size::class, 'size_id', 'id');
-    }
+    // /**
+    //  * Get the size that owns the Product
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function size(): BelongsTo
+    // {
+    //     return $this->belongsTo(Size::class, 'size_id', 'id');
+    // }
 }
