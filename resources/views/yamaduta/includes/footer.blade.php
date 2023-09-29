@@ -20,31 +20,31 @@ Founded with a passion for fashion and a deep commitment to our community, we've
 						<li class="address">
 							<!-- SVG PIN -->
 							<svg class="svg-pin">
-								<use xlink:href="#svg-pin"></use>	
+								<use xlink:href="#svg-pin"></use>
 							</svg>
 							<!-- /SVG PIN -->
-							<p>Pinagbuhatan Pasig City</p>
+							<p>{{ App\Models\Contact::find(1)->first()->value('location') }}</p>
 						</li>
 						<li class="phone">
 							<!-- SVG PHONE -->
 							<svg class="svg-phone">
-								<use xlink:href="#svg-phone"></use>	
+								<use xlink:href="#svg-phone"></use>
 							</svg>
 							<!-- /SVG PHONE -->
-							<p>09164913599</p>
+							<p>{{ App\Models\Contact::find(1)->first()->value('contact_number') }}</p>
 						</li>
 						<li class="email">
 							<!-- SVG ENVELOPE -->
 							<svg class="svg-envelope">
-								<use xlink:href="#svg-envelope"></use>	
+								<use xlink:href="#svg-envelope"></use>
 							</svg>
 							<!-- /SVG ENVELOPE -->
-							<p><a href="mailto:jhomdec@gmail.com">jhomdec@gmail.com</a></p>
+							<p><a href="mailto:{{ App\Models\Contact::find(1)->first()->value('email') }}">{{ App\Models\Contact::find(1)->first()->value('email') }}</a></p>
 						</li>
 					</ul>
 					<!-- /CONTACT INFO -->
 
-					
+
 				</article>
 
 				<article>
@@ -60,16 +60,16 @@ Founded with a passion for fashion and a deep commitment to our community, we've
 								<!-- /SVG ARROW -->
 							</li>
 							<li>
-								<a href="{{ url('/shop')}}">Shop</a>
+								<a href="{{ route('shop') }}">Shop</a>
 								<!-- SVG ARROW -->
 								<svg class="svg-arrow">
 									<use xlink:href="#svg-arrow"></use>
 								</svg>
 								<!-- /SVG ARROW -->
 							</li>
-							
+
 							<li>
-								<a href="{{ url('/about')}}">About us</a>
+								<a href="{{ route('aboutUs') }}">About us</a>
 								<!-- SVG ARROW -->
 								<svg class="svg-arrow">
 									<use xlink:href="#svg-arrow"></use>
@@ -77,19 +77,19 @@ Founded with a passion for fashion and a deep commitment to our community, we've
 								<!-- /SVG ARROW -->
 							</li>
 							<li>
-								<a href="{{ url('/contact')}}"">Contact</a>
+								<a href="{{ route('contact') }}">Contact</a>
 								<!-- SVG ARROW -->
 								<svg class="svg-arrow">
 									<use xlink:href="#svg-arrow"></use>
 								</svg>
 								<!-- /SVG ARROW -->
 							</li>
-							
+
 						</ul>
 					</nav>
 				</article>
 
-				
+
 			</section>
 		</div>
 		<div id="footer-bottom-wrap">
@@ -99,7 +99,7 @@ Founded with a passion for fashion and a deep commitment to our community, we've
 				<ul class="social-links">
 					<li class="fb"><a href="#"></a></li>
 					<li class="twt"><a href="#"></a></li>
-				
+
 				</ul>
 				<!-- /SOCIAL LINKS -->
 			</section>

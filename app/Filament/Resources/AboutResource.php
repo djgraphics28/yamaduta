@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SizeResource\Pages;
-use App\Filament\Resources\SizeResource\RelationManagers;
-use App\Models\Size;
+use App\Filament\Resources\AboutResource\Pages;
+use App\Filament\Resources\AboutResource\RelationManagers;
+use App\Models\About;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,23 +13,37 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SizeResource extends Resource
+class AboutResource extends Resource
 {
-    protected static ?string $model = Size::class;
+    protected static ?string $model = About::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Product Manamgent';
-
-    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationGroup = 'Website Settings';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\RichEditor::make('company_history')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('founder_message')
+                    ->required()
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('mission_statement')
+                    ->required()
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('community_involvement')
+                    ->required()
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('social_media_links')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -37,8 +51,6 @@ class SizeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -71,9 +83,9 @@ class SizeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSizes::route('/'),
-            'create' => Pages\CreateSize::route('/create'),
-            'edit' => Pages\EditSize::route('/{record}/edit'),
+            'index' => Pages\ListAbouts::route('/'),
+            'create' => Pages\CreateAbout::route('/create'),
+            'edit' => Pages\EditAbout::route('/{record}/edit'),
         ];
     }
 }

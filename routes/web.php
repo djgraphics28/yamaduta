@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('yamaduta.index');
 });
+
+Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
+Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');

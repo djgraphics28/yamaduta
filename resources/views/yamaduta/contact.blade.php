@@ -6,38 +6,8 @@
 			<h3 class="title">Contact US</h3>
 			<!-- BULLETS -->
 			<ul class="bullets">
-				<!-- BULLET -->
-				<li>
-					
-					<h6>Location</h6>
-					<p>Pinagbuhatan Pasig City</p>
-				</li>
-				<!-- /BULLET -->
+				@livewire('contact')
 
-				<!-- BULLET -->
-			
-				<!-- /BULLET -->
-
-				<!-- BULLET -->
-				<li>
-					
-					
-					<h6>CellPhone Number</h6>
-					<p>09164913599</p>
-				</li>
-				<!-- /BULLET -->
-
-				<!-- BULLET -->
-				<li>
-					
-					<!-- /SVG PIGGY -->
-					<h6>Gmail</h6>
-					<p>jhomdec@gmail.com</p>
-				</li>
-				<!-- /BULLET -->
-
-				<!-- BULLET -->
-			
 			</ul>
 			<!-- /BULLETS -->
 		</section>

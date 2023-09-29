@@ -16,13 +16,13 @@
 		<ul>
 			<li><a href="{{ url('/')}}">Home</a></li>
 			<li>
-			<a href="{{ url('/shop')}}" class="submenu">SHOP</a></li>		
+			<a href="{{ url('/shop')}}" class="submenu">SHOP</a></li>
 			<li><a href="{{ url('/about')}}">About us</a></li>
 			<li><a href="{{ url('/contact')}}">Contact</a></li>
-			
+
 		<!--	<li><a href="#">CART</a></li> -->
-			
-			
+
+
 		</ul>
 		</ul>
 		<!-- /MENU LIST -->
@@ -36,14 +36,13 @@
 		<ul>
 		<li><a href="{{ url('/')}}">Home</a></li>
 			<li>
-			<a href="{{ url('/shop')}}" class="submenu">SHOP</a></li>	
-			<li><a href="{{ url('/about')}}">About us</a></li>
-			<li><a href="{{ url('/contact')}}">Contact</a></li>
-		<!--	<li><a href="#">CART</a></li> -->
+			<a href="{{ route('shop') }}" class="submenu">SHOP</a></li>
+			<li><a href="{{ route('aboutUs') }}">About us</a></li>
+			<li><a href="{{ route('contact') }}">Contact</a></li>
+		    <li><a href="#">CART</a></li>
 		</ul>
 	</nav>
 	<!-- /MAIN MENU -->
 	    <!-- /WRAPPER -->
 
         <!-- JS Global -->
-       

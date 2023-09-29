@@ -2,18 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\Size;
-use Filament\Tables;
-use App\Models\Color;
-use App\Models\Product;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProductResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Product;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
 {
@@ -21,7 +19,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Product Manamgent';
+    protected static ?string $navigationGroup = 'Product Management';
 
     protected static ?int $navigationSort = 1;
 
@@ -29,57 +27,75 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('product_code')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('main_image')
-                    ->image()
-                    ->required(),
-                Forms\Components\FileUpload::make('other_image')
-                    ->multiple()
-                    ->image(),
-                // Forms\Components\TextInput::make('sizes'),
-                // Forms\Components\TextInput::make('colors'),
-                 Forms\Components\Repeater::make('colors')
+                Forms\Components\Section::make('Main Product Details')
                     ->schema([
-                        Forms\Components\Select::make('colors')
-                            ->label('Colors')
-                            ->options(Color::all()->pluck('name', 'id'))
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name')
                             ->required(),
+                        Forms\Components\TextInput::make('sku')
+                            ->label('SKU')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('description')
+                            ->maxLength(255),
+                        Forms\Components\FileUpload::make('main_image')
+                            ->image()
+                            ->required(),
+                    ])->columns(2),
+                Forms\Components\Section::make('Add Child Product')
+                    ->schema([
+                        Forms\Components\Repeater::make('child_products')
+                        ->relationship()
+                        ->schema([
+                            Forms\Components\TextInput::make('parent_sku')
+                                ->label('Parent Sku')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('child_sku')
+                                ->label('Child Sku')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('name')
+                                ->label('Child Product Name')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('size')
+                                ->label('Size')
+                                ->required(),
+                            Forms\Components\TextInput::make('color')
+                                ->label('Color'),
+                            Forms\Components\TextInput::make('price')
+                                ->label('Price')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('stocks')
+                                ->label('Stocks')
+                                ->required()
+                                ->maxLength(255),
+                        ])
+                        ->columns(7),
                     ]),
-                Forms\Components\Repeater::make('sizes')
+                Forms\Components\Section::make('Other Data')
                     ->schema([
-                        Forms\Components\Select::make('sizes')
-                            ->label('Sizes')
-                            ->options(Size::all()->pluck('name', 'id'))
+                        Forms\Components\TextInput::make('price')
+                            ->required()
+                            ->numeric()
+                            ->prefix('₱'),
+                        Forms\Components\TextInput::make('total_stock')
+                            ->required()
+                            ->numeric()
+                            ->default(0),
+                        Forms\Components\Toggle::make('is_active')
                             ->required(),
-                        Forms\Components\TextInput::make('quantity')
-                            ->label('quantity')
+                        Forms\Components\Toggle::make('is_visible')
                             ->required(),
-                    ])
-                    ->columns(2),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
-                Forms\Components\TextInput::make('stocks')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\Toggle::make('is_active')
-                    ->required(),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required(),
-                Forms\Components\Toggle::make('is_featured')
-                    ->required(),
+                        Forms\Components\Toggle::make('is_featured')
+                            ->required(),
+                    ])->columns(2),
+
             ]);
     }
 
@@ -90,18 +106,18 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('category.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('product_code')
+                Tables\Columns\TextColumn::make('sku')
+                    ->label('SKU')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('main_image'),
-                Tables\Columns\ImageColumn::make('other_image'),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('php')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('stocks')
+                Tables\Columns\TextColumn::make('total_stock')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\ColorResource\Pages;
+namespace App\Filament\Resources\ContactResource\Pages;
 
-use App\Filament\Resources\ColorResource;
+use App\Filament\Resources\ContactResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditColor extends EditRecord
+class EditContact extends EditRecord
 {
-    protected static string $resource = ColorResource::class;
+    protected static string $resource = ContactResource::class;
 
     protected function getHeaderActions(): array
     {

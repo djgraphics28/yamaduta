@@ -9,6 +9,8 @@
 	<!-- favicon -->
 
 	<title>Yamaduta</title>
+
+    @livewireStyles()
 </head>
 <body>
 
@@ -34,5 +36,7 @@
 <script src="{{asset('js/menu.js')}}"></script>
 <!-- Home -->
 <script src="{{asset('js/home.js')}}"></script>
+
+@livewireScripts()
 </body>
 </html>

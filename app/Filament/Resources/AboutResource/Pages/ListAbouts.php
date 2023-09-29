@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\SizeResource\Pages;
+namespace App\Filament\Resources\AboutResource\Pages;
 
-use App\Filament\Resources\SizeResource;
+use App\Filament\Resources\AboutResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListSizes extends ListRecords
+class ListAbouts extends ListRecords
 {
-    protected static string $resource = SizeResource::class;
+    protected static string $resource = AboutResource::class;
 
     protected function getHeaderActions(): array
     {

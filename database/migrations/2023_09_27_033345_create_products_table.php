@@ -13,16 +13,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('product_code')->unique();
+            $table->string('sku')->unique();
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('main_image');
-            $table->string('other_image')->nullable();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
-            $table->json('sizes')->nullable();
-            $table->json('colors')->nullable();
             $table->decimal('price', 16);
-            $table->integer('stocks')->default(0);
+            $table->integer('total_stock')->default(0);
             $table->boolean('is_active')->default(true);
             $table->boolean('is_visible')->default(true);
             $table->boolean('is_featured')->default(false);
