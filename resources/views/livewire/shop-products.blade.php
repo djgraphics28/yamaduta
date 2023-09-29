@@ -11,7 +11,7 @@
         <ul class="product-list grid-v2">
             @forelse ($records as $item)
                 <!-- PRODUCT -->
-                <a href="{{ url('/shop/showproducts/' . $item->id) }}">
+                <a href="{{ route('show.product', $item->id) }}">
                     <li class="list-item">
 
                         <!-- ACTIONS -->

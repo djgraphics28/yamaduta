@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -40,5 +41,10 @@ class FrontendController extends Controller
     public function cartList()
     {
         return view('yamaduta.cart');
+    }
+
+    public function show(Product $product)
+    {
+        return view('yamaduta.viewproducts', compact('product'));
     }
 }
