@@ -1,4 +1,4 @@
-@extends('yamaduta.frontend');
+@extends('yamaduta.frontend')
 @section('content')
 <br><br><br><br>
 <div id="institutional-wrap">

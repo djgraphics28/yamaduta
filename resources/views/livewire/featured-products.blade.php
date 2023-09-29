@@ -6,7 +6,7 @@
                     <div class="picture">
                         <figure class="liquid">
 
-                            <img src="{{ $item->main_image }}" alt="product1">
+                            <img src="{{ asset('storage/' . $item->main_image) }}" alt="product1">
                         </figure>
                     </div>
                 </a>

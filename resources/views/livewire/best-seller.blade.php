@@ -36,7 +36,7 @@
                 <!-- ACTIONS -->
                 <div class="actions">
                     <figure class="liquid">
-                        <img src="{{ asset('images/clothes/1.jpg') }}" alt="product1">
+                        <img src="{{ asset('storage/' . $item->main_image) }}" alt="product1">
                     </figure>
                     <div>
                         <a href="#qv-p1" class="button quick-view" data-effect="mfp-3d-unfold">
@@ -52,25 +52,24 @@
                             <div class="product-pictures">
                                 <div class="product-photo">
                                     <figure class="liquid">
-                                        <img src="images/clothes/1.jpg" alt="product-image">
+                                        <img src="{{ asset('storage/' . $item->main_image) }}" alt="product-image">
                                     </figure>
                                 </div>
                                 <ul class="picture-views">
-                                    <!-- VIEW -->
-                                    <li class="selected">
-                                        <figure class="liquid">
-                                            <img src="images/clothes/1.jpg" alt="picture-view">
-                                        </figure>
-                                    </li>
-                                    <!-- /VIEW -->
+                                    @forelse ($item->child_products as $child)
+                                        <!-- VIEW -->
+                                        <li class="selected">
+                                            <figure class="liquid">
+                                                <img src="{{ asset('storage/' . $child->image) }}" alt="picture-view">
+                                            </figure>
+                                        </li>
+                                        <!-- /VIEW -->
+                                    @empty
 
-                                    <!-- VIEW -->
-                                    <li>
-                                        <figure class="liquid">
-                                            <img src="images/clothes/2.jpg" alt="picture-view">
-                                        </figure>
-                                    </li>
-                                    <!-- /VIEW -->
+                                    @endforelse
+
+
+
                             </div>
                             <!-- /PRODUCT PICTURES -->
 

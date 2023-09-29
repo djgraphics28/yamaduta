@@ -84,6 +84,9 @@ class ProductResource extends Resource
                             ->required()
                             ->numeric()
                             ->prefix('₱'),
+                        Forms\Components\TextInput::make('old_price')
+                            ->numeric()
+                            ->prefix('₱'),
                         Forms\Components\TextInput::make('total_stock')
                             ->required()
                             ->numeric()
@@ -94,7 +97,7 @@ class ProductResource extends Resource
                             ->required(),
                         Forms\Components\Toggle::make('is_featured')
                             ->required(),
-                    ])->columns(2),
+                    ])->columns(3),
 
             ]);
     }

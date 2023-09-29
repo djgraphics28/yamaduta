@@ -1,28 +1,28 @@
 
-@extends('yamaduta.frontend');
+@extends('yamaduta.frontend')
 @section('content')
 
 
-   
 
 
-                       
+
+
 
 <!-- SHOP -->
 <div id="shop-wrap">
-   
+
     <section id="shop" class="right expandible-sidebar">
-        
+
             <!-- FULL VIEW -->
             <div class="product-quick-view full view">
                 <!-- PRODUCT PICTURES -->
                 <div class="product-pictures">
                     <div class="product-photo">
                         <figure class="liquid">
-                         <img src="{{asset('uploads/products/' .$products->image)}}" alt="product-image">  
+                         <img src="{{asset('uploads/products/' .$products->image)}}" alt="product-image">
                         </figure>
                     </div>
-                
+
                 </div>
                 <!-- /PRODUCT PICTURES -->
 
@@ -71,15 +71,15 @@
                     <!-- /RATING -->
                     <p>{{$products->description}}</p>
                     <p class="highlighted current">Php {{$products->price}}</p>
-                  
+
                     <h5> Size: {{$products->size}}</h5>
                     <br>
                     <div class="color-selection">
                         <h5>Color: {{$products->color}}</h5>
-                     
+
                     </div>
-                   
-                   
+
+
                 </div>
                 <!-- /PRODUCT DESCRIPTION -->
             </div>
@@ -88,5 +88,5 @@
                         </div>
                         <!-- /RATE -->
 
-                   
+
     @endsection

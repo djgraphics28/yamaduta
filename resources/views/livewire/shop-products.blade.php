@@ -17,7 +17,7 @@
                         <!-- ACTIONS -->
                         <div class="actions">
                             <figure class="liquid">
-                                <img src="{{ asset('uploads/products/' . $item->main_image) }}" alt="image">
+                                <img src="{{ asset('storage/' . $item->main_image) }}" alt="image">
                             </figure>
                         </div>
                         <!-- /ACTIONS -->

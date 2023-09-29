@@ -3,12 +3,12 @@
 </head>
 
 <body>
-    @extends('yamaduta.frontend');
+    @extends('yamaduta.frontend')
     @section('content')
         <center>
             <h3 class="title" style="padding-top: 80px">ABOUT US</h3>
         </center>
-       @livewire('about-us')
+        @livewire('about-us')
 
 
     </body>
