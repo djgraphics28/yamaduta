@@ -27,3 +27,7 @@ Route::get('/product/{product}', [FrontendController::class, 'show'])->name('sho
 
 Route::post('/cart', [FrontendController::class, 'addToCart'])->name('cart.store');
 Route::get('/cart', [FrontendController::class, 'cartList'])->name('cart.list');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

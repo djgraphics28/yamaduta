@@ -72,13 +72,33 @@
         <img class="pull-nav" src="images/icons/pull-icon.png" alt="pull-icon">
         <ul>
             <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ route('shop') }}" >Shop</a></li>
+            <li><a href="{{ route('shop') }}">Shop</a></li>
             <li><a href="{{ route('aboutUs') }}">About us</a></li>
             <li><a href="{{ route('contact') }}">Contact</a></li>
             <li><a href="{{ route('cart.list') }}">Cart</a></li>
+            @guest
+                @if (Route::has('login'))
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                @endif
 
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign Up</a></li>
+                @if (Route::has('register'))
+                    <li><a href="{{ route('register') }}">Sign Up</a></li>
+                @endif
+            @else
+                <li><a href="#">{{ Auth::user()->name }}</a></li>
+                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                     {{ __('Logout') }}
+                 </a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                </li>
+
+            @endguest
+
+
         </ul>
     </nav>
 </div>

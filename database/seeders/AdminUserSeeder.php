@@ -16,6 +16,7 @@ class AdminUserSeeder extends Seeder
     {
         $data = [
             [
+                'is_admin' => true,
                 'name' => 'Admin',
                 'email' => 'admin@mail.com',
                 'email_verified_at' => now(),
