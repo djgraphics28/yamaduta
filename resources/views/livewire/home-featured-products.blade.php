@@ -41,15 +41,32 @@
                         <img src="{{ asset('storage/' . $item->main_image) }}" alt="product1">
                     </figure>
                     <div>
-                        <a href="#qv-p1" class="button quick-view" data-effect="mfp-3d-unfold">
+                        <a href="#qv-p{{ $item->id }}" class="button quick-view" data-effect="mfp-3d-unfold">
                             <!-- SVG QUICKVIEW -->
                             <svg class="svg-quickview">
                                 <use xlink:href="#svg-quickview"></use>
                             </svg>
                             <!-- /SVG QUICKVIEW -->
                         </a>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <center>
+                            <button class="btn-warning">
+                                Add to cart
+                            </button>
+                        </center>
+
                         <!-- QUICK VIEW POPUP -->
-                        <div id="qv-p1" class="product-quick-view mfp-with-anim mfp-hide">
+                        <div id="qv-p{{ $item->id }}" class="product-quick-view mfp-with-anim mfp-hide">
                             <!-- PRODUCT PICTURES -->
                             <div class="product-pictures">
                                 <div class="product-photo">
@@ -136,11 +153,11 @@
                                     </svg>
                                     <!-- /SVG CHECK -->
 
-                                        @if ($item->total_stock > 0)
-                                            <span class="available">
-                                                In Stocks
-                                            </span>
-                                        @endif
+                                    @if ($item->total_stock > 0)
+                                        <span class="available">
+                                            In Stocks
+                                        </span>
+                                    @endif
 
                                 </h5>
                                 <h5>Available Size:</h5>
@@ -280,10 +297,6 @@
                         <p>{{ $item->description }}</p>
                         <p class="highlighted current">Php {{ $item->price }}</p>
                     </div>
-
-                    <button class="btn-warning">
-                        Add to cart
-                    </button>
 
                     <!-- /DESCRIPTION -->
             </li>
